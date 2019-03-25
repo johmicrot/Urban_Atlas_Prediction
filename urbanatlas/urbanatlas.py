@@ -1,14 +1,6 @@
 # Original code taken from https://github.com/adrianalbert/urban-environments/tree/master/dataset-collection
 #This is just a modification of their urbanatlas.py file. It include working code for the UA 2012 dataset, as well as some
-
-import warnings
-warnings.filterwarnings("always")
-# warnings.filterwarnings("ignore", message="numpy.dtype size changed")
-# warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
-warnings.filterwarnings('ignore') #warning suppresions have to be before urbanatlas
 import numpy as np, pandas as pd , re , copy
-
-# geo stuff
 import geopandas as gpd
 from shapely.geometry import Polygon
 
@@ -20,11 +12,9 @@ CLASS_COL = 'ITEM2012'
 POP_COL = 'POP_TOT'
 AREA_COL = 'Shape_Area'
 LEN_COL = 'Shape_Leng'
-
 N_SAMPLES_PER_CITY  = 50000
 N_SAMPLES_PER_CLASS = 3000
 MAX_SAMPLES_PER_POLY= 100
-
 
 class UAShapeFile():
 	'''
