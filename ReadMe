@@ -15,5 +15,5 @@ Guide on how to add a population to UA shapefiles, generate data points, and dow
 
 
 
-pzsatml taken from https://github.com/adrianalbert/pysatml
+pysatml taken from https://github.com/adrianalbert/pysatml
 unmodified urbanatlas taken from https://github.com/adrianalbert/urban-environments/tree/master/dataset-collection
