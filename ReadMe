@@ -1,0 +1,14 @@
+Guide on how to add a population to UA shapefiles, generate data points, and download images
+
+
+1) download specific city shapefiles from urban atlas 
+	https://land.copernicus.eu/local/urban-atlas/urban-atlas-2012?tab=download
+2) unzip and put each city folder into one directory ~/Cities/{country name}/Shapefiles_Original/{city folder}
+2) run file ~/Cities/Modify_Country_Shapefiles{name abbreviation}.py
+	It will create a new folder ~/Cities/{country name}/Shapefiles_with_pop/
+4) unzip AllPopulationEstimates.zip and AllPopulationEstimates_part2.zip into the directory
+	~/Cities/AllPopulationEstimates
+
+4)run creating_all_extracted_data.py
+	change variable State to your country name
+5)run static_maps_api_download_all_cities.py
