@@ -1,15 +1,17 @@
+# Original code taken from https://github.com/adrianalbert/urban-environments/tree/master/dataset-collection
+#This is just a modification of their urbanatlas.py file. It include working code for the UA 2012 dataset, as well as some
+
 import warnings
 warnings.filterwarnings("always")
-warnings.filterwarnings("ignore", message="numpy.dtype size changed")
-warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
+# warnings.filterwarnings("ignore", message="numpy.dtype size changed")
+# warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 warnings.filterwarnings('ignore') #warning suppresions have to be before urbanatlas
 import numpy as np, pandas as pd , re , copy
 
 # geo stuff
 import geopandas as gpd
-from shapely.geometry import Point, Polygon
+from shapely.geometry import Polygon
 
-import pysatml
 from pysatml.utils import gis_utils as gu
 from pysatml.utils import vector_utils as vu
 from pysatml import satimage as satimg
@@ -21,8 +23,8 @@ LEN_COL = 'Shape_Leng'
 
 N_SAMPLES_PER_CITY  = 50000
 N_SAMPLES_PER_CLASS = 3000
-# N_SAMPLES_PER_CLASS = 1250
 MAX_SAMPLES_PER_POLY= 100
+
 
 class UAShapeFile():
 	'''
@@ -48,7 +50,6 @@ class UAShapeFile():
 		self._classes = self._gdf[self._class_col].unique()
 		print "%d polygons | %d land use classes" % (len(self._gdf), len(self._classes))
 
-		# read in projection file associated with shapefile, if available
 		self._prjfile = shapefile.replace(".shp", ".prj") if prjfile is None else prjfile
 		try:
 			self._prj = gu.read_prj_file(self._prjfile)  
@@ -116,6 +117,7 @@ class UAShapeFile():
 
 	def fix_sampling_locations(self, t_lat, t_lon,old_pop):
 		return fix_sampling_locations(self._gdf, t_lat = t_lat, t_lon= t_lon, index=old_pop)
+
 def remove_junk_str(input):
     out = re.sub(' +','_', re.sub(r'([^\s\w]|_)+', '', input.lower()))
     return out
@@ -194,7 +196,6 @@ def construct_class_raster(gdf, bbox, all_classes,class_col=CLASS_COL,pop_col= P
 	locations = pd.DataFrame(locations, columns=["grid-i", "grid-j", "lon", "lat", "class",'pop'])
 	return raster, locations
 
-
 def generate_sampling_locations(gdf_sel,all_classes, n_samples_per_class=N_SAMPLES_PER_CLASS,class_col=CLASS_COL,pop_col= POP_COL, max_samples=MAX_SAMPLES_PER_POLY):
 	out_of_shape = 0
 	counter = 0
@@ -208,14 +209,12 @@ def generate_sampling_locations(gdf_sel,all_classes, n_samples_per_class=N_SAMPL
 		select_polygons.reset_index(inplace=True)
 
 	# make sure all polygons are ok
-	# some polygons have their geometries messed up in the previous step??
 	select_polygons['geometry'] = select_polygons['geometry'].apply(lambda p: p.buffer(0) if not p.is_valid else p)
 	
 	# sample locations from each polygon
 	locations = select_polygons.groupby(class_col)\
 				.apply(lambda x: sample_locations_from_polygon(x,
 					sample_on_boundary='road' in x[class_col].iloc[0].lower() or 'railway' in x[class_col].iloc[0].lower()))
-	# locations = select_polygons.groupby(class_col).apply(lambda x: sample_locations_from_polygon(x))
 	t_lat = locations['lat']
 	t_lon = locations['lon']
 
@@ -237,9 +236,6 @@ def generate_sampling_locations(gdf_sel,all_classes, n_samples_per_class=N_SAMPL
 		lon = t_lon[i] - deg_delt / 2  # set the starting location to the bottom left corner
 		lat = t_lat[i] - deg_delt / 2  # set the starting location to the bottom left corner
 		cell_poly = Polygon([(lon, lat), (lon+deg_delt, lat),(lon+deg_delt, lat+deg_delt), (lon, lat+deg_delt)])
-		# below is equivalent to the few line above, notice how its lon/lat for the polygon (keep in mind don't shift lat & long for it)
-		# gdf_window = vu.filter_gdf_by_centered_window(gdf_sel, (lat,lon), (0.17, 0.17))
-
 		gdf_window = vu.filter_gdf_by_polygon(gdf_sel, cell_poly)
 		try:
 			#intersection returns another polygon
@@ -248,7 +244,6 @@ def generate_sampling_locations(gdf_sel,all_classes, n_samples_per_class=N_SAMPL
 				.apply(lambda x: x.intersection(cell_poly) \
 					   .apply(lambda y: y.area * (6400 ** 2) ).sum())
 		except:
-			# print('this point had no intersection (out of shapefile)')
 			out_of_shape +=1
 			continue
 		classified_area = areas_per_class.sum()
@@ -277,24 +272,21 @@ def generate_sampling_locations(gdf_sel,all_classes, n_samples_per_class=N_SAMPL
 			accurate_pop = pop_of_polygon*percent_of_polygon
 			scaled_pop.append(accurate_pop)
 			area_pop += accurate_pop
-		if len(area_per_poly)>2:
-			True
 
 		if type(classified_area) == np.float64: #ensures
 			if classified_area > 0:
 				class_percents = [0] * len(all_classes)
 				for class_name, value in percent_per_class.iteritems():
 					class_name_cleaned = remove_junk_str(class_name)
+					#weird coditions because some landtypes were slightly off
 					if class_name_cleaned == 'open_spaces_with_little_or_no_vegetations_beaches_dunes_bare_rocks_glaciers':
 						continue
 					if class_name_cleaned == 'water_bodies':
 						class_name_cleaned = 'water'
 					if class_name_cleaned == 'wetland':
 						class_name_cleaned = 'wetlands'
-					#
-					# print(class_name)
-					# print(class_name_cleaned )
-					# class_name_cleaned = remove_junk_str(class_name)
+
+
 					label = class2label[class_name_cleaned]
 					class_percents[label] = value
 
@@ -317,13 +309,12 @@ def fix_sampling_locations(gdf_sel, t_lat, t_lon, index, class_col=CLASS_COL, po
 	lat = t_lat - deg_delt / 2  # set the starting location to the bottom left corner
 	cell_poly = Polygon(
 		[(lon, lat), (lon + deg_delt, lat), (lon + deg_delt, lat + deg_delt), (lon, lat + deg_delt)])
-	# below is equivalent to the few line above, notice how its lon/lat for the polygon (keep in mind don't shift lat & long for it)
-	# gdf_window = vu.filter_gdf_by_centered_window(gdf_sel, (lat,lon), (0.17, 0.17))
+
 	gdf_window = vu.filter_gdf_by_polygon(gdf_sel, cell_poly)
 
-	areas_per_class = gdf_window.groupby(class_col) \
-		.apply(lambda x: x.intersection(cell_poly) \
-			   .apply(lambda y: y.area * (6400 ** 2)).sum())
+	# areas_per_class = gdf_window.groupby(class_col) \
+	# 	.apply(lambda x: x.intersection(cell_poly) \
+	# 		   .apply(lambda y: y.area * (6400 ** 2)).sum())
 
 	gdf_w_area = gdf_window[AREA_COL]
 	gdf_w_pop = gdf_window[POP_COL]
@@ -333,7 +324,7 @@ def fix_sampling_locations(gdf_sel, t_lat, t_lon, index, class_col=CLASS_COL, po
 	area_per_poly = gdf_window.groupby('IDENT') \
 		.apply(lambda x: x.intersection(cell_poly) \
 			   .apply(lambda y: y.area * (6400 ** 2)).sum())
-	area_per_poly_l = list(area_per_poly)
+	# area_per_poly_l = list(area_per_poly)
 	total_classified_area = area_per_poly.sum()
 	print('total_classified_area')
 	print(total_classified_area)
@@ -356,18 +347,16 @@ def fix_sampling_locations(gdf_sel, t_lat, t_lon, index, class_col=CLASS_COL, po
 		pop_per_area_in_window = accurate_pop
 		scaled_pop.append(pop_per_area_in_window)
 		area_pop += pop_per_area_in_window
-
-
-
 	return area_pop
 
-#function only sees one polygon type (can't determine nearby points here
+
+AL = remove_junk_str('Arable land (annual crops)')
+FR = remove_junk_str('Forests')
+
+#function only sees one polygon type at a time
 def sample_polygons(df, n_samples=500, max_samples=None):
-	'''
-	A stratified sampling of polygons in the DataFrame gdf.
-	'''
-	AL = remove_junk_str('Arable land (annual crops)')
-	FR = remove_junk_str('Forests')
+	global AL
+	global FR
 	if AL in set(df['ITEM2012']) or FR in set(df['ITEM2012']):
 		max_samples = 5
 	samples_per_poly = (df.Shape_Area / float(df.Shape_Area.min())).astype(int)
@@ -381,18 +370,11 @@ def sample_polygons(df, n_samples=500, max_samples=None):
 			or 'Continuous urban fabric (S.L. : > 80%)' in set(df['ITEM2012']) :
 		samples_per_poly = samples_per_poly * 15
 		n_samples == samples_per_poly +1
-		# print('\nNew samples_per_poly')
-		# print(samples_per_poly.sum())
-		# print('df type: ')
-		# print(set(df['ITEM2012']))
 
 	if 'Other roads and associated land' in set(df['ITEM2012']):
 		samples_per_poly = samples_per_poly * 2
 		n_samples == samples_per_poly + 1
-		# print('\nNew samples_per_poly')
-		# print(samples_per_poly.sum())
-		# print('df type: ')
-		# print(set(df['ITEM2012']))
+
 	if samples_per_poly.sum() > n_samples:
 		pvec = np.array([0.0, 0.2, 0.5, 0.7, 0.9, 0.95, 1])
 		bins = np.percentile(samples_per_poly, pvec*100)
@@ -405,23 +387,17 @@ def sample_polygons(df, n_samples=500, max_samples=None):
 				continue
 			y = x[(x>=bins[i]) & (x<bins[i+1])] if i<len(bins)-2 \
 					else x[(x>=bins[i]) & (x<=bins[i+1])]
-			# print i, (bins[i], bins[i+1]), cnts[i], pvec[i+1], len(x[(x>=bins[i]) & (x<=bins[i+1])])
 			y = y.sample(frac=pvec[i+1],random_state=1)
 			ret.append(y)
 		ret = pd.concat(ret)
 		ret_scaled = (ret.astype(float) / ret.sum() * n_samples)\
 						.apply(np.ceil).astype(int)
-		#.ix is deprecated. Please use
-		# .loc for label based indexing or
-		# .iloc for positional indexing
-		#i think we are using positional indexing
 		ret_df = df.ix[ret_scaled.index]
 		ret_df['samples'] = ret_scaled.values
 	else:
 		ret_df = df
 		ret_df['samples'] = samples_per_poly.values
-	
-	# clamp # samples per polygon if specified
+
 	if max_samples is not None:
 		ret_df['samples'] = ret_df['samples'].apply(\
 									lambda x: min([x, max_samples]))
@@ -430,9 +406,6 @@ def sample_polygons(df, n_samples=500, max_samples=None):
 
 #function only sees one polygon type (can't determine nearby points here
 def sample_locations_from_polygon(df, sample_on_boundary=False):
-	'''
-	Given a list of polygons of the same type, generate locations for sampling images
-	'''
 
 	polygons = df['geometry']
 	nsamples = df['samples']
@@ -444,8 +417,6 @@ def sample_locations_from_polygon(df, sample_on_boundary=False):
 		if idx.sum()>0:
 			polygons = polygons[idx]
 			nsamples = nsamples[idx]
-			# added seed = 1 below to make it consistent
-			# locs = [satimg.generate_locations_within_polygon(p, nSamples=m - 1, seed=1, strict=True) \
 			locs = [satimg.generate_locations_within_polygon(p, nSamples=m - 1, strict=True) \
 					for p,m in zip(polygons, nsamples)]
 			locs = np.vstack(locs).squeeze()
