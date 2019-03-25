@@ -12,3 +12,8 @@ Guide on how to add a population to UA shapefiles, generate data points, and dow
 5)run creating_all_extracted_data.py
 	change variable State to your country name
 6)run static_maps_api_download_all_cities.py
+
+
+
+pzsatml taken from https://github.com/adrianalbert/pysatml
+unmodified urbanatlas taken from https://github.com/adrianalbert/urban-environments/tree/master/dataset-collection
