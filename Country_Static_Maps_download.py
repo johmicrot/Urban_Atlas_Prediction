@@ -1,7 +1,7 @@
 import os, glob, urbanatlas as ua, classes
 
 
-Country = 'UK'
+Country = 'COUNTRY NAME GOES HERE' # e.g. UK,Germany
 window_km = 50
 # image_size = 224
 img_area = (224 * 1.19 / 1000) ** 2  # in km^2, at zoom level 17
@@ -16,6 +16,10 @@ all_classes = classes.get_classes()
 N_SAMPLES_PER_CITY = 20000
 N_SAMPLES_PER_CLASS = N_SAMPLES_PER_CITY / len(all_classes)
 MAX_SAMPLES_PER_POLY = 15
+OUT_PATH_CSV = "extracted_data/%s/data_points/"%(Country)
+all_shapefiles =  'Cities/%s/Shapefiles_with_pop/*.shp'%(Country)
+if not os.path.exists(OUT_PATH_CSV):
+    os.makedirs(OUT_PATH_CSV)
 
 def generate_datapoints(city, OUT_PATH_CSV, all_classes):
     shapefn = city.split('/')[-1]
@@ -34,11 +38,6 @@ def generate_datapoints(city, OUT_PATH_CSV, all_classes):
                                                          max_samples=MAX_SAMPLES_PER_POLY)
     locations_train.to_csv("%s/%s.csv"%(OUT_PATH_CSV,city_name),encoding = 'utf-8')
     print('Sucessfully saved %s file'%city_name)
-
-OUT_PATH_CSV = "extracted_data/%s/data_points/"%(Country)
-if not os.path.exists(OUT_PATH_CSV):
-    os.makedirs(OUT_PATH_CSV)
-all_shapefiles =  'Cities/%s/Shapefiles_with_pop/*.shp'%(Country)
 
 for city in glob.glob(all_shapefiles):
     shapefn = city.split('/')[-1]
