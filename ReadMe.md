@@ -13,9 +13,9 @@
 ### 4) Unzip AllPopulationEstimates.zip and AllPopulationEstimates_part2.zip into the directory below
 	~/Cities/AllPopulationEstimates
 
-### 5) Run Creating_all_extracted_data.py. Generates the datapoints with targets.
+### 5) Run Country_Data_Generation.py. Generates the datapoints with targets.
 
-### 6) Run static_maps_api_download_all_cities.py.  Downloads the satelite images.
+### 6) Run Country_Static_Maps_download.py.  Downloads the satelite images.
 
 
 
