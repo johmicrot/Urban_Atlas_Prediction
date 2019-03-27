@@ -4,7 +4,7 @@
 ### 1) Download specific city shapefiles from urban atlas 
 	https://land.copernicus.eu/local/urban-atlas/urban-atlas-2012?tab=download
 	
-### 2) Unzip and put each city folder into the directory 
+### 2) Unzip and put each city folder into the directory format shown below
 	~/Cities/{country name}/Shapefiles_Original/{city folder}
 
 ### 3) Run file Modify_Country_Shapefiles.py. It will create new shapefiles with population information in the directory below 
