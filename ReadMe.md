@@ -10,8 +10,8 @@ This project makes three major contributions:
 3. Apply Data Distillation to make use of unlabeled images. Thereby, two new ideas are suggested: First, only images are included for which the Data Distillation Ensemble is sure about, i.e. the prediction certainty is above a certain threshold. Second, the class distribution of the training set is taken into account which improves performance on small classes. Overall, it is shown that Data Distillation leads to an increase in accuracy on the test set by extracting information from unlabeled images.
 
 
-### Dataset creation - add a population to UA shapefiles, generate data points, and download images
-    This can be skipped by downloading our pre made dataet, which can be downloaded from https://goo.gl/n4w5gS. 
+### Dataset creation
+    This can be skipped by downloading our pre made dataset, which can be downloaded from https://goo.gl/n4w5gS. 
     Make sure to  Unzip Urban_Atlas_Cities.7z to ~/Dataset/
 
 #### 1) Download specific city shapefiles from urban atlas 
