@@ -1,6 +1,16 @@
 
-## This guide overviews how to generate the Urban Atlas Dataset, and how to train it in both a multi-task and single-task enviornments with Keras.
+## Predicting Societal Indicators from Space
 ### Contributors: "Daniel Pototzky, and John Rothman"
+
+This project makes three major contributions:
+1. Create a high-quality dataset by matching satellite images from Google Maps Static API with auxiliary data from Urban Atlas. Every image has two labels, one for the land type, another for population count. Overall, the dataset contains 225k images from 183 European cities.
+
+2. Explore the potential of Multi-task architectures in this domain. It is shown that Multi-task learning is particularly beneficial if the number of labeled images is relatively small.
+
+3. Data Distillation is applied to make use of unlabeled images. Thereby, two new ideas are suggested: First, only images are included for which the Data Distillation Ensemble is sure about, i.e. the prediction certainty is above a certain threshold. Second, the class distribution of the training set is taken into account which improves performance on small classes. Overall, it is shown that Data Distillation leads to an increase in accuracy on the test set by extracting information from unlabeled images.
+
+
+This guide overviews how to generate the Urban Atlas Dataset, and how to train it in both a multi-task and single-task enviornments with Keras.
 ### Dataset creation - add a population to UA shapefiles, generate data points, and download images
     This can be skipped by downloading our pre made dataet, which can be downloaded from https://goo.gl/n4w5gS. 
     Make sure to  Unzip Urban_Atlas_Cities.7z to ~/Dataset/
