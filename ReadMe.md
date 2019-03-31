@@ -7,10 +7,9 @@ This project makes three major contributions:
 
 2. Explore the potential of Multi-task architectures in this domain. It is shown that Multi-task learning is particularly beneficial if the number of labeled images is relatively small.
 
-3. Data Distillation is applied to make use of unlabeled images. Thereby, two new ideas are suggested: First, only images are included for which the Data Distillation Ensemble is sure about, i.e. the prediction certainty is above a certain threshold. Second, the class distribution of the training set is taken into account which improves performance on small classes. Overall, it is shown that Data Distillation leads to an increase in accuracy on the test set by extracting information from unlabeled images.
+3. Apply Data Distillation to make use of unlabeled images. Thereby, two new ideas are suggested: First, only images are included for which the Data Distillation Ensemble is sure about, i.e. the prediction certainty is above a certain threshold. Second, the class distribution of the training set is taken into account which improves performance on small classes. Overall, it is shown that Data Distillation leads to an increase in accuracy on the test set by extracting information from unlabeled images.
 
 
-This guide overviews how to generate the Urban Atlas Dataset, and how to train it in both a multi-task and single-task enviornments with Keras.
 ### Dataset creation - add a population to UA shapefiles, generate data points, and download images
     This can be skipped by downloading our pre made dataet, which can be downloaded from https://goo.gl/n4w5gS. 
     Make sure to  Unzip Urban_Atlas_Cities.7z to ~/Dataset/
@@ -32,12 +31,12 @@ This guide overviews how to generate the Urban Atlas Dataset, and how to train i
 #### 6) Execute Country_Static_Maps_download.py to Downloads the satelite images. Will save to the directory ~/Dataset/
 
 
-### Training with Keras
+### Exploring the potential of Multi-task architectures in this domain
 
 #### 1) modify Train_Model.py to select the dataset you want to train and select if you are doing a multi-task or single-task
 
 
-### Data Distillation
+### Apply Data Distillation to make use of unlabeled images
 
 #### 1) Execute Generate_Ensamble_Predictions.py.  It creates "labels" for unlabeled images given a model trained on a small labeled part of the data.
 
