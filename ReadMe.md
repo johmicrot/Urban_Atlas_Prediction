@@ -26,9 +26,9 @@ This project makes three major contributions:
 4) Download AllPopulationEstimates.zip from https://goo.gl/n4w5gS and unzip into the directory below
 	~/Cities/AllPopulationEstimates
 
- 5) Execute Country_Data_Generation.py. Generates the datapoints with targets.
+ 5) Execute Dataset_points_Generation.py. Generates the datapoints with targets.
 
-6) Execute Country_Static_Maps_download.py to Downloads the satelite images. Will save to the directory ~/Dataset/
+6) Execute Static_Maps_download.py to Downloads the satelite images. Will save to the directory ~/Dataset/
 
 
 ### Explore the potential of Multi-task architectures in this domain
