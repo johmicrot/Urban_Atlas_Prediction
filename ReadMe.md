@@ -31,14 +31,16 @@ This project makes three major contributions:
 #### 6) Execute Country_Static_Maps_download.py to Downloads the satelite images. Will save to the directory ~/Dataset/
 
 
-### Exploring the potential of Multi-task architectures in this domain
+### Explore the potential of Multi-task architectures in this domain
 
 #### 1) modify Train_Model.py to select the dataset you want to train and select if you are doing a multi-task or single-task
 
 
 ### Apply Data Distillation to make use of unlabeled images
 
-#### 1) Execute Generate_Ensamble_Predictions.py.  It creates "labels" for unlabeled images given a model trained on a small labeled part of the data.
+#### 1) Train a base model on a labeled subpart of the data using Train_Model.py as described in the previous section
+#### 2) Execute Generate_Ensamble_Predictions.py.  It creates "labels" for unlabeled images given the pretrained model trained on a small labeled part of the data.
+
 
 
 pysatml taken from https://github.com/adrianalbert/pysatml <br/>
