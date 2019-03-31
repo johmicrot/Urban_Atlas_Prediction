@@ -1,1 +1,0 @@
-from satimage import SatImage

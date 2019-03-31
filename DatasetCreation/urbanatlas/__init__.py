@@ -1,1 +1,0 @@
-from urbanatlas import UAShapeFile
