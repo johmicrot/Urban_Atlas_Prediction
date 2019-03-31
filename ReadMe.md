@@ -1,4 +1,11 @@
-## Guide on how to add a population to UA shapefiles, generate data points, and download images
+# This guide overviews how to generate the Urban Atlas Dataset, and how to train it in both a multi-task and single-task enviornments with Keras.
+
+
+
+
+
+
+## Dataset creation - add a population to UA shapefiles, generate data points, and download images
 
 
 ### 1) Download specific city shapefiles from urban atlas 
@@ -21,3 +28,7 @@
 
 pysatml taken from https://github.com/adrianalbert/pysatml <br/>
 unmodified urbanatlas taken from https://github.com/adrianalbert/urban-environments/tree/master/dataset-collection
+
+
+## Training with Keras
+
