@@ -1,9 +1,10 @@
-"""Authors: Daniel Pototsky, John Rothman"""
-
+"""Creator: Daniel Pototzky,
+   Authors: Daniel Pototzky, John Rothman"""
 import keras
 import numpy as np
 from skimage.io import imread
 from scipy.ndimage.interpolation import affine_transform
+
 
 class DataGenerator(keras.utils.Sequence):
     """Generates data for Keras"""
@@ -30,7 +31,7 @@ class DataGenerator(keras.utils.Sequence):
         # Generate indexes of the batch
         indexes = self.indexes[index*self.batch_size:(index+1)*self.batch_size]
         # Generate data
-        X, y = self.__data_generation(indexes, self.mode)
+        X, y = self.__data_generation(indexes)
         return X, y
 
     def transform_matrix_offset_center(self, matrix, x, y):
@@ -70,7 +71,7 @@ class DataGenerator(keras.utils.Sequence):
         return x
 
     def augment(self, img, istrain):
-        #numbers calculated form mean and std of Urban Atlas Dataset
+        # Numbers calculated form mean and std of Urban Atlas Dataset
         img[:, :, 0] = (img[:, :, 0] - 56.76211554) / 22.71095346
         img[:, :, 1] = (img[:, :, 1] - 65.80346362) / 24.25872165
         img[:, :, 2] = (img[:, :, 2] - 56.60189766) / 24.4900414
@@ -89,30 +90,30 @@ class DataGenerator(keras.utils.Sequence):
         if self.shuffle:
             np.random.shuffle(self.indexes)
 
-    def get_input_and_output(self, df2, idx, dir, istrain,mode):
-        img = imread(dir + '/' + df2.loc[idx, 'filename'])
-        img = self.augment(img, istrain)
-        label1 = []
-        label2 = []
-        if mode == 'single_task':
+    def get_input_and_output(self, idx):
+        df2 = self.dataframe
+        img = imread(self.directory + '/' + df2.loc[idx, 'filename'])
+        img = self.augment(img, self.istrain)
+        if self.mode == 'single_task':
             label1 = df2.loc[idx, self.class_name]
             return img, label1
-        elif mode == 'multi_task':
-            label1 = df2.loc[idx, 'class1']
-            label2 = df2.loc[idx, 'class2']
+        elif self.mode == 'multi_task':
+            label1 = df2.loc[idx, self.class_name[0]]
+            label2 = df2.loc[idx, self.class_name[1]]
             # label2 = df2.loc[idx, self.class_name[1]]
             return img, label1, label2
 
         # return img, label1, label2
 
-    def __data_generation(self, tmp_indices, mode):
+    def __data_generation(self, tmp_indices):
+        mode = self.mode
         batch_x = []
         if mode == 'single_task':
             batch_y = []
             # Generate data
             for ID in tmp_indices:
                 # Store sample
-                input, output = self.get_input_and_output(self.dataframe, ID, self.directory, self.istrain, self.mode)
+                input, output = self.get_input_and_output(ID)
                 batch_x += [input]
                 batch_y += [output]
             batch_x = np.array(batch_x)
@@ -125,7 +126,7 @@ class DataGenerator(keras.utils.Sequence):
             # Generate data
             for ID in tmp_indices:
                 # Store sample
-                input, output1,  output2 = self.get_input_and_output(self.dataframe, ID, self.directory, self.istrain, self.mode)
+                input, output1,  output2 = self.get_input_and_output(ID)
                 batch_x += [input]
                 batch_y1 += [output1]
                 batch_y2 += [output2]

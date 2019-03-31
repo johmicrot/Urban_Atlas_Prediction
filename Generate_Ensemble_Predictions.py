@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+"""Creator: Daniel Pototzky,
+   Authors: Daniel Pototzky, John Rothman"""
+
 import pandas as pd
 import numpy as np
 from keras.models import load_model
@@ -27,10 +31,10 @@ filenames_53k = train_df_53k['filename'].tolist()
 filenames_subpart = train_df_subpart['filename'].tolist()
 filenames_unlabelled_images = list(np.setdiff1d(filenames_53k,filenames_subpart))
 train_df_unlabeled = train_df_53k[train_df_53k['filename'].isin(filenames_unlabelled_images)]
-train_df_unlabeled  = train_df_unlabeled .reset_index(drop=True)
+train_df_unlabeled = train_df_unlabeled .reset_index(drop=True)
 
 # Load pretrained model
-pretrained_model = load_model ('path/to/model.hdf5')
+pretrained_model = load_model('path/to/model.hdf5')
 
 N_CLASSES = len(train_df_unlabeled[TASK_NAME].unique())
 
@@ -61,7 +65,7 @@ params_flip2 = {'dim': (224, 224, 3),
                 'n_classes1': N_CLASSES,
                 'n_channels': 3,
                 'shuffle': False,
-                'flip2':True,
+                'flip2': True,
                 'mode': TASK,
                 'class_name': TASK_NAME
                 }
@@ -92,7 +96,6 @@ list_of_transformations = [params_default, params_flip1, params_flip2, params_do
 ensemble_prediction_mat = np.zeros(len(train_df_unlabeled) * N_CLASSES).reshape(len(train_df_unlabeled), N_CLASSES)
 
 for params in list_of_transformations:
-
     gen_test = Dg.DataGenerator(train_df_unlabeled, IMG_SOURCE, **params)
     predict = pretrained_model.predict_generator(gen_test, steps=len(train_df_unlabeled))
     ensemble_prediction_mat += predict

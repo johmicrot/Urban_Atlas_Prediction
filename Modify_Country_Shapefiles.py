@@ -1,11 +1,17 @@
-import glob, os, numpy as np
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Creator: John Rothman"""
+
+import glob
+import os
+import numpy as np
 from simpledbf import Dbf5
 import geopandas as gpd
-COUNTRY = 'UK'
-COUNTRY_ABBREV = 'UK'
+COUNTRY = 'PUT COUNTRY NAME HERE'
+COUNTRY_ABBREV = 'PUT COUNTRY ABBREVIATION HERE'
 
-all_population_files = 'Cities/AllPopulationEstimates/pop_%s/*.dbf'%COUNTRY_ABBREV
-all_shapesfiles = 'Cities/%s/Shapefiles_Original/*/Shapefiles/*_UA2012.shp' % (COUNTRY)
+all_population_files = 'Cities/AllPopulationEstimates/pop_%s/*.dbf' % COUNTRY_ABBREV
+all_shapesfiles = 'Cities/%s/Shapefiles_Original/*/Shapefiles/*_UA2012.shp' % COUNTRY
 shp_folder = COUNTRY + '/Shapefiles_pop_test/'
 
 if not os.path.exists(shp_folder):
@@ -20,7 +26,7 @@ for file in glob.glob(all_shapesfiles):
     new_shp = shp_folder + file_base + '.shp'
     print(new_shp)
 
-    #if the file already exists, skip it
+    # If the file already exists, skip it
     if not os.path.isfile(new_shp):
         pop_file = ''
         for tmp_pop_file in glob.glob(all_population_files):
