@@ -39,7 +39,8 @@ This project makes three major contributions:
 ### Apply Data Distillation to make use of unlabeled images
 
 #### 1) Train a base model on a labeled subpart of the data using Train_Model.py as described in the previous section
-#### 2) Execute Generate_Ensamble_Predictions.py.  It creates "labels" for unlabeled images given the pretrained model trained on a small labeled part of the data.
+#### 2) Execute Generate_Ensamble_Predictions.py.  It generates Ensemble predictions for unlabeled images given the model that was trained on a small labeled part of the data.
+#### 3) Generate labels for unlabeled images by running THISFILE.py. You can specify if you want to apply 'naive' Data Distillation, apply a threshold for inclusion of images, or combine a threshold with information about class distribution from the training set.
 
 
 
