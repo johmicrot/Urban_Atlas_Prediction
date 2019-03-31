@@ -33,8 +33,7 @@ This project makes three major contributions:
 
 ### Explore the potential of Multi-task architectures in this domain
 
-#### 1) modify Train_Model.py to select the dataset you want to train and select if you are doing a multi-task or single-task
-
+#### 1) You can run both single-task and multi-task settings using Train_Model.py. Make sure to select the part of the dataset you want to train on. Also make sure to specify if you want to train a single-task or multi-task setup.
 
 ### Apply Data Distillation to make use of unlabeled images
 
