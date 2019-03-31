@@ -1,7 +1,4 @@
-import warnings
-# warnings.filterwarnings("ignore", message="numpy.dtype size changed")
-# warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
-import numpy as np , pandas as pd ,os, glob, re
+import numpy as np pandas as pd ,os, glob, re
 from pysatapi.googlemaps.GoogleMaps import GoogleMaps
 import classes
 
