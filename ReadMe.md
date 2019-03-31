@@ -20,7 +20,7 @@ This project makes three major contributions:
 2) Unzip and put each city folder into the directory format shown below
 	~/Cities/{country name}/Shapefiles_Original/{city folder}
 
- 3) Run file Modify_Country_Shapefiles.py. It will create new shapefiles with population information in the directory below 
+ 3) Run file Modify_Shapefiles.py. It will create new shapefiles with population information in the directory below 
 	~/Cities/{country name}/Shapefiles_with_pop/
 	
 4) Download AllPopulationEstimates.zip from https://goo.gl/n4w5gS and unzip into the directory below
