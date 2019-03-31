@@ -1,4 +1,4 @@
-,filename,class1,class2,land_name,pop,filesize
+,filename,land_type_pred,pop_pred,land_name,pop,filesize
 0,Belgium/images/BE010L1_KORTRIJK/50.808072_3.191864.jpg,3,1,urban_fabric,4032.95132105,14488
 1,Germany/images/DE082L0_DESSAU_ROSSLAU/51.874272_12.288561.jpg,1,0,forests,0.0,10480
 2,France/images/FR049L2_LORIENT/47.953677_-3.455720.jpg,1,0,forests,0.0,12242

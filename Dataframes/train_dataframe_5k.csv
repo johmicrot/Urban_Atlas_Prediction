@@ -1,4 +1,4 @@
-,filename,class1,class2,land_name,pop,filesize
+,filename,land_type_pred,pop_pred,land_name,pop,filesize
 0,Germany/images/DE008L2_LEIPZIG/51.414193_12.982213.jpg,1,0,forests,0.0,11502
 1,Germany/images/DE034L1_BONN/50.652249_7.236594.jpg,1,1,forests,57.8113229233,10373
 2,Germany/images/DE034L1_BONN/50.802211_7.482981.jpg,1,0,forests,0.0,9196

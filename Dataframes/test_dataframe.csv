@@ -1,4 +1,4 @@
-,filename,class1,class2,land_name,pop,filesize
+,filename,land_type_pred,pop_pred,land_name,pop,filesize
 0,Germany/images/DE505L0_CHEMNITZ/50.833589_12.935883.jpg,3,1,urban_fabric,12034.104509100001,12770
 1,Germany/images/DE505L0_CHEMNITZ/50.838074_12.922991.jpg,3,1,urban_fabric,3006.43004784,13659
 2,Germany/images/DE505L0_CHEMNITZ/50.810136_12.890303.jpg,3,1,urban_fabric,12111.989285700001,10595

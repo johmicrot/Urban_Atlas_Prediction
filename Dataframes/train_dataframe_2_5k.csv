@@ -1,4 +1,4 @@
-,filename,class1,class2,land_name,pop,filesize
+,filename,land_type_pred,pop_pred,land_name,pop,filesize
 0,Germany/images/DE045L1_ISERLOHN/51.407552_7.816733.jpg,3,1,urban_fabric,3321.65552062,14086
 1,Germany/images/DE032L1_ERFURT/51.144414_10.969350.jpg,4,0,water,0.0,6850
 2,Netherlands/images/NL515L2_VENLO/51.391450_5.987635.jpg,1,0,forests,0.0,9749

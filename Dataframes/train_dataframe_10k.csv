@@ -1,4 +1,4 @@
-,filename,class1,class2,land_name,pop,filesize
+,filename,land_type_pred,pop_pred,land_name,pop,filesize
 0,France/images/FR057L2_BOULOGNE_SUR_MER/50.681188_1.619731.jpg,1,0,forests,0.0,12006
 1,Germany/images/DE527L1_BREMERHAVEN/53.502059_8.762501.jpg,1,0,forests,0.0,13542
 2,Germany/images/DE048L1_WILHELMSHAVEN/53.531117_7.948728.jpg,3,1,urban_fabric,2256.07107083,9549
