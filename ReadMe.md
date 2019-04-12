@@ -48,7 +48,12 @@ Water
   <img src=Dataset/Germany/images/DE011L1_DUSSELDORF/51.202616_6.730954.jpg width="200" height="200">
 </div>
 
-
+<br>
+Forests
+<div class="column">
+  <img src=Dataset/Germany/images/DE011L1_DUSSELDORF/51.105523_6.738932.jpg width="200" height="200">
+  <img src=Dataset/Germany/images/DE011L1_DUSSELDORF/51.235477_7.034913.jpg width="200" height="200">
+</div>
 
 ### Explore the potential of Multi-task architectures in this domain
 
