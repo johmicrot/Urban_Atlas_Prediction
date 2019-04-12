@@ -53,7 +53,17 @@ Forests
 <div class="column">
   <img src=Dataset/Germany/images/DE011L1_DUSSELDORF/51.105523_6.738932.jpg width="200" height="200">
   <img src=Dataset/Germany/images/DE011L1_DUSSELDORF/51.235477_7.034913.jpg width="200" height="200">
+  <img src=Dataset/Netherlands/images/NL020L1_ROOSENDAAL/51.478826_4.389469.jpg width="200" height="200">
 </div>
+<br>
+Arable Land (Annual Crops)
+<div class="column">
+  <img src=Dataset/Netherlands/images/NL020L1_ROOSENDAAL/51.495747_4.443052.jpg width="200" height="200">
+  <img src=Dataset/Netherlands/images/NL020L1_ROOSENDAAL/51.477002_4.370888.jpg width="200" height="200">
+  <img src=Dataset/Netherlands/images/NL020L1_ROOSENDAAL/51.566406_4.458441.jpg width="200" height="200">
+</div>
+
+
 
 ### Explore the potential of Multi-task architectures in this domain
 
