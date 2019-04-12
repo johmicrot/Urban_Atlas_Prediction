@@ -46,6 +46,7 @@ Water
 <div class="column">
   <img src=Dataset/Germany/images/DE011L1_DUSSELDORF/51.229189_6.730385.jpg width="200" height="200">
   <img src=Dataset/Germany/images/DE011L1_DUSSELDORF/51.202616_6.730954.jpg width="200" height="200">
+  <img src=Dataset/Netherlands/images/NL032L1_MIDDELBURG/51.540278_3.686061.jpg width="200" height="200">
 </div>
 
 <br>
@@ -63,7 +64,24 @@ Arable Land (Annual Crops)
   <img src=Dataset/Netherlands/images/NL020L1_ROOSENDAAL/51.566406_4.458441.jpg width="200" height="200">
 </div>
 
+<br>
+Continious Urban Fabric (SL >80)
+<div class="column">
+  <img src=Dataset/Netherlands/images/NL032L1_MIDDELBURG/51.483523_3.601518.jpg width="200" height="200">
+  <img src=Dataset/Netherlands/images/NL519L2_ALMELO/52.357650_6.664952.jpg width="200" height="200">
+  <img src=Dataset/Netherlands/images/NL032L1_MIDDELBURG/51.484399_3.601974.jpg width="200" height="200">
+</div>
 
+<br>
+Discontinuous Medium Density Urban Fabric (SL 30-50)
+<div class="column">
+  <img src=Dataset/Netherlands/images/NL032L1_MIDDELBURG/51.504008_3.590963.jpg width="200" height="200">
+  <img src=Dataset/Netherlands/images/NL519L2_ALMELO/52.353631_6.598450.jpg width="200" height="200">
+  <img src=Dataset/Netherlands/images/NL505L1_MAASTRICHT/50.837035_5.666169.jpg width="200" height="200">
+</div>
+
+More specifics on the UA dataset classes can be found here
+https://land.copernicus.eu/user-corner/technical-library/urban-atlas-mapping-guide
 
 ### Explore the potential of Multi-task architectures in this domain
 
