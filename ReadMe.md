@@ -30,19 +30,15 @@ This project makes three major contributions:
 
 6) Execute Static_Maps_download.py to Downloads the satelite images. Will save to the directory ~/Dataset/
 
-Here are some examples of a few classes.<br><br>
+Here are some examples of a few classes.<br>
 Airport<br>
-![image](Dataset/Germany/images/DE011L1_DUSSELDORF/51.284446_6.771030.jpg)
-![image](Dataset/Germany/images/DE011L1_DUSSELDORF/51.276106_6.751596.jpg)
-![image](Dataset/Germany/images/DE011L1_DUSSELDORF/51.285025_6.748615.jpg)
 
-Water<br>
-![image](Dataset/Germany/images/DE011L1_DUSSELDORF/51.229189_6.730385.jpg)
-![image](Dataset/Germany/images/DE011L1_DUSSELDORF/51.202616_6.730954.jpg)
+<div class="row">
+  <div class="column">
+	  <img src=Dataset/Germany/images/DE011L1_DUSSELDORF/51.284446_6.771030.jpg>
+	</div>
+</div>
 
-Forests<br>
-![image](Dataset/Germany/images/DE011L1_DUSSELDORF/51.105523_6.738932.jpg)
-![image](Dataset/Germany/images/DE011L1_DUSSELDORF/51.235477_7.034913.jpg)
 
 
 
