@@ -82,7 +82,7 @@ Discontinuous Medium Density Urban Fabric (SL 30-50)
 
 Discontinuous Low Density Urban Fabric (SL 10-30)
 <div class="column">
-  <img src=Dataset/Netherlands/images/NL032L1_MIDDELBURG/51.504008_3.590963.jpg width="200" height="200">
+  <img src=Dataset/Italy/images/IT034L1_BOLZANO/46.419299_11.248438.jpg width="200" height="200">
   <img src=Dataset/Italy/images/IT034L1_BOLZANO/46.501161_11.363057.jpg width="200" height="200">
   <img src=Dataset/Italy/images/IT034L1_BOLZANO/46.507178_11.344900.jpg width="200" height="200">
 </div>
