@@ -75,10 +75,18 @@ Continious Urban Fabric (SL >80)
 <br>
 Discontinuous Medium Density Urban Fabric (SL 30-50)
 <div class="column">
-  <img src=Dataset/Netherlands/images/NL032L1_MIDDELBURG/51.504008_3.590963.jpg width="200" height="200">
+  <img src=Dataset/Italy/images/IT034L1_BOLZANO/46.501700_11.331804.jpg width="200" height="200">
   <img src=Dataset/Netherlands/images/NL519L2_ALMELO/52.353631_6.598450.jpg width="200" height="200">
   <img src=Dataset/Netherlands/images/NL505L1_MAASTRICHT/50.837035_5.666169.jpg width="200" height="200">
 </div>
+
+Discontinuous Low Density Urban Fabric (SL 10-30)
+<div class="column">
+  <img src=Dataset/Netherlands/images/NL032L1_MIDDELBURG/51.504008_3.590963.jpg width="200" height="200">
+  <img src=Dataset/Italy/images/IT034L1_BOLZANO/46.501161_11.363057.jpg width="200" height="200">
+  <img src=Dataset/Italy/images/IT034L1_BOLZANO/46.507178_11.344900.jpg width="200" height="200">
+</div>
+
 
 More specifics on the UA dataset classes can be found here
 https://land.copernicus.eu/user-corner/technical-library/urban-atlas-mapping-guide
