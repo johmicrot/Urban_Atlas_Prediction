@@ -36,7 +36,9 @@ Airport<br>
 <div class="row">
   <div class="column">
 	  <img src=Dataset/Germany/images/DE011L1_DUSSELDORF/51.284446_6.771030.jpg>
-	</div>
+	  <img src=Dataset/Germany/images/DE011L1_DUSSELDORF/51.276106_6.751596.jpg>
+	  <img src=Dataset/Germany/images/DE011L1_DUSSELDORF/51.285025_6.748615.jpg>
+  </div>
 </div>
 
 
