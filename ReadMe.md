@@ -27,11 +27,18 @@ This project makes three major contributions:
 	~/Cities/AllPopulationEstimates
 
  5) Execute Dataset_points_Generation.py. Generates the datapoints with targets.
-<img src=Dataset_creation_urban_atlas.jpg height="200">
-
-
 
 6) Execute Static_Maps_download.py to Downloads the satelite images. Will save to the directory ~/Dataset/
+
+<img src=Dataset_creation_urban_atlas.jpg height="200">
+
+<img src=Dataset_creation_urban_atlas2.jpg height="200">
+
+<img src=Dataset_creation_urban_atlas3.jpg height="200">
+
+<img src=Dataset_creation_urban_atlas4.jpg height="200">
+
+
 
 Here are some examples of a few classes.<br><br>
 
