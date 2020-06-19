@@ -33,8 +33,11 @@ This project makes three major contributions:
 
 For better understanding her is the general process of how the datasets were created.
 <img src=Dataset_creation_urban_atlas.jpg height="200">
+
 <img src=Dataset_creation_urban_atlas2.jpg height="200">
+
 <img src=Dataset_creation_urban_atlas3.jpg height="200">
+
 <img src=Dataset_creation_urban_atlas4.jpg height="200">
 
 
