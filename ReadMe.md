@@ -30,12 +30,11 @@ This project makes three major contributions:
 
 6) Execute Static_Maps_download.py to Downloads the satelite images. Will save to the directory ~/Dataset/
 
+
+For better understanding her is the general process of how the datasets were created.
 <img src=Dataset_creation_urban_atlas.jpg height="200">
-
 <img src=Dataset_creation_urban_atlas2.jpg height="200">
-
 <img src=Dataset_creation_urban_atlas3.jpg height="200">
-
 <img src=Dataset_creation_urban_atlas4.jpg height="200">
 
 
