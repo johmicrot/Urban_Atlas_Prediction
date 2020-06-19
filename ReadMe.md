@@ -1,6 +1,6 @@
 
 ## Predicting Societal Indicators from Space
-### Contributors: Daniel Pototzky, and John Rothman
+### Contributors: Daniel Pototzky, John Rothman
 
 This project makes three major contributions:
 1. Create a high-quality dataset by matching satellite images from Google Maps Static API with auxiliary data from Urban Atlas. Every image has two labels, one for the land type, another for population count. Overall, the dataset contains 225k images from 183 European cities.
