@@ -113,6 +113,6 @@ https://land.copernicus.eu/user-corner/technical-library/urban-atlas-mapping-gui
  2) Execute Generate_Ensamble_Predictions.py.  It generates Ensemble predictions for unlabeled images given the model that was trained on a small labeled part of the data.
  3) Generate labels for unlabeled images by running Create_new_labels.py. You can specify if you want to apply 'naive' Data Distillation, apply a threshold for inclusion of images, or combine a threshold with information about class distribution from the training set.
  4) Rerun Train_Model.py using the small number of labeled images as well as images 'labeled' by the Data Distillation ensemble. 
-
-
+ <img src=Data_Distillation.jpg height="200">
+ 	
 pysatml taken from https://github.com/adrianalbert/pysatml <br/>
